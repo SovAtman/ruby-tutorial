@@ -1,0 +1,24 @@
+<h1>The Crier's Crow</h1>
+
+<%= link_to 'New parchment', new_article_path %>
+<br>
+<br> 
+<table>
+  <tr>
+    <th>Titles and Orders</th>
+    <th>Sacred Text</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Reveal', article_path(article) %></td>
+      <td><%= link_to 'Correct', edit_article_path(article) %></td>
+			<td><%= link_to 'Exile', article_path(article),
+              method: :delete,
+              data: { confirm: 'Can you live with the blood on your hands?' } %></td>
+    </tr>
+  <% end %>
+</table>
